@@ -11,6 +11,7 @@ namespace XMLWeather
 {
     public partial class CurrentScreen : UserControl
     {
+        Image image1 = Properties.Resources.images; 
         public CurrentScreen()
         {
             InitializeComponent();
@@ -24,6 +25,27 @@ namespace XMLWeather
             tempLabel.Text = Form1.days[0].currentTemp;
             minOutput.Text = Form1.days[0].tempLow;
             maxOutput.Text = Form1.days[0].tempHigh;
+            rainConditions.Text = Form1.days[0].precipitation + "% chance";
+            cloudsConditions.Text = Form1.days[0].condition;
+
+            int con = Convert.ToInt32(Form1.days[0].condition);
+            int rain = Convert.ToInt32(Form1.days[0].precipitation); 
+            if(con >= 500 && con <= 599)
+            {
+                conditonImage.BackgroundImage = Properties.Resources.images; 
+            }
+            else if (con >= 200 && con <= 499)
+            {
+                conditonImage.BackgroundImage = Properties.Resources.download; 
+            }
+            else if (con >= 0 && con <=199)
+            {
+                conditonImage.BackgroundImage = Properties.Resources._38_388521_happy_ecstatic_sel_sun_mostly_sunny_symbol_weather;
+            }
+            if(rain >=99 && rain <=500 )
+            {
+                conditonImage.BackgroundImage = Properties.Resources.rain_512; 
+            }
         }
 
         /// <summary>
